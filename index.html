@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seatwork 1 , 4thqre</title
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background: linear-gradient(135deg,#ffb6c1,#ff69b4);
+    font-family: Arial;
+}
+
+.container-box{
+    background:white;
+    width:350px;
+    margin:80px auto;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+}
+
+.btn-pink{
+    background:#ff69b4;
+    color:white;
+}
+
+.btn-pink:hover{
+    background:#ff1493;
+}
+
+.small-text{
+    font-size:12px;
+    color:gray;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container-box text-center">
+    <h1>Login</h1>
+    <p class="small-text">enter your stuff plss</p>
+
+    <h5>Username</h5>
+    <input type="text" id="user" class="form-control mb-2" placeholder="username here">
+
+    <h5>Password</h5>
+    <input type="password" id="pass" class="form-control mb-2" placeholder="password here">
+
+    <div class="form-check text-start">
+        <input class="form-check-input" type="checkbox" onclick="toggleHelp()">
+        <label class="form-check-label">show instructions</label>
+    </div>
+
+    <p id="help" class="small-text"></p>
+
+    <button class="btn btn-pink mt-2" onclick="login()">Login</button>
+    <button class="btn btn-secondary mt-2" onclick="clearFields()">Cancel</button>
+
+    <br><br>
+    <a href="https://www.w3schools.com">forgot password?(same)</a>
+</div>
+
+<script>
+let correctUser = "sampleuser67";
+let correctPass = "12345678"; 
+let attempts = 0; 
+let isLoggedIn = false; 
+
+
+function toggleHelp(){
+    let helpText = document.getElementById("help");
+    if(helpText.innerHTML == ""){
+        helpText.innerHTML = "Hint: try a 67 meme, and thenn count to 8";
+    }else{
+        helpText.innerHTML = "";
+    }
+}
+function login(){
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+    if(u === correctUser && p === correctPass){
+        isLoggedIn = true;
+        window.alert("Access granted"); // output
+        document.body.innerHTML += "<p>Welcome " + u + " !!</p>";
+    }
+    else{
+        attempts++;
+        window.alert("Access denied");
+        document.write("wrong login attempt #" + attempts);
+    }
+}
+
+function clearFields(){
+    document.getElementById("user").value = "";
+    document.getElementById("pass").value = "";
+}
+
+</script>
+
+</body>
+</html>
